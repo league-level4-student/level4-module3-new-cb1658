@@ -2,6 +2,7 @@ package _01_Spies_On_A_Train;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 import _00_Intro_to_Linked_Lists.LinkedList;
 import _00_Intro_to_Linked_Lists.Node;
@@ -26,36 +27,66 @@ public class SpiesOnATrain {
 
     	Node<TrainCar> head = train.getHead();
     	
+    	HashMap<String, Integer> nameToNumber = new HashMap<String, Integer>();
+    	
+    	
+    	
     	
     	while(head != null) {
     		
-    		System.out.println(head.getValue());
+    		
     		
     		String testimony = head.getValue().questionPassenger();
         	
         	String[] testimony_split = testimony.split(" ");
         	
-        	System.out.println(testimony);
+        	
         	
         	
         	for(String x : clues) {
         		if(testimony.endsWith(x+".")) {  			
         			
-        			return testimony_split[13];
+        			//return testimony_split[13];
+        			
+        			String temp = testimony_split[13];
+        			
+        			if(! nameToNumber.containsKey(temp)) {
+        				
+        				nameToNumber.put(temp,1);
+        			}
+        			
+        			else {
+        				int temp2 = nameToNumber.get(temp);
+        				nameToNumber.put(temp,temp2+1);
+        			}
         			
         		}
         	}
+        	     	
         	
-        	//for(String x : clues) {
+        	
+          	//for(String x : clues) {
         	//	System.out.println(x);
         	//}
         	
         	head = head.getNext();
     	}
     	
+    	String maxSoFar = "";
+		int maxSoFarNum = 0;
+    	
+    	for(Entry e : nameToNumber.entrySet()) {
+    		
+    		if((int) e.getValue() > maxSoFarNum) {
+    			maxSoFarNum = (int) e.getValue();
+    			maxSoFar = (String) e.getKey();
+    		}
+    		System.out.println(e.getKey() + " " + e.getValue());
+    	}
     	
     	
-        return "";
+    	
+        return maxSoFar;
 
     }
 

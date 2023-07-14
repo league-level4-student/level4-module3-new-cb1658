@@ -33,25 +33,74 @@ public class RainbowZombieCongaLine {
 
     // Make the passed in zombie the first Zombie in the conga line!
     public void engine(Zombie dancer) {
-
+    	
+    	Node<Zombie> temp = congaLine.getHead();
+    	
+    	Node<Zombie> newNode = new Node<Zombie>(dancer); 
+    	
+    	temp.setPrev(newNode);
+    	
+    	newNode.setNext(temp);
+    	
     }
 
     // Make the passed in zombie the last Zombie in the conga line!
     public void caboose(Zombie dancer) {
 
+    	Node<Zombie> temp = congaLine.getTail();
+    	
+    	Node<Zombie> newNode = new Node<Zombie>(dancer);
+    	
+    	temp.setNext(newNode);
+    	
+    	newNode.setPrev(temp);
     }
 
     // Place the zombie at the designated position in the conga line!
     public void jumpInTheLine(Zombie dancer, int position) {
-
+    	
+    	Node<Zombie> oldPrev = congaLine.getHead();
+    	
+    	for(int i = 0; i < position; i++) {
+    		oldPrev = oldPrev.getNext();
+    	}
+    	
+    	Node<Zombie> oldNext = congaLine.getHead();
+    	
+    	for(int i = 0; i < position+1; i++) {
+    		oldNext = oldNext.getNext();
+    	}
+    	
+    	Node<Zombie> newNode = new Node<Zombie>(dancer);
+    	
+    	oldPrev.setNext(newNode);
+    	newNode.setPrev(oldPrev);
+    	
+    	oldNext.setPrev(newNode);
+    	newNode.setNext(oldNext);
     }
 
+    
+    
+    
     /*
      * Remove all zombies with the same hat color as the passed in zombie from
      * the conga line!
      */
     public void everyoneOut(Zombie dancer) {
-
+    	ZombieHatColor color = dancer.getZombieHatColor();
+    	
+    	Node<Zombie> temp = congaLine.getHead();
+    	
+    	for(int i = 0; i < congaLine.size(); i++) {
+    		if(temp.getValue().getZombieHatColor() == color) {
+    			congaLine.remove(i);
+    		}
+    		else {
+    			temp = temp.getNext();
+    		}
+    		
+    	}
     }
 
     /*
@@ -59,7 +108,13 @@ public class RainbowZombieCongaLine {
      * from the conga line!
      */
     public void youAreDone(Zombie dancer) {
-
+    	Node<Zombie> temp = congaLine.getHead();
+    	
+    	boolean killedZombie = false;
+    	
+    	while(!killedZombie) {
+    		
+    	}
     }
 
     /*
