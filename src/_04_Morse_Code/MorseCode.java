@@ -5,7 +5,7 @@ public class MorseCode implements Comparable<MorseCode> {
     private String decoded;
     private String coded;
 
-    public MorseCode(String decoded, String coded) {
+    public MorseCode(String decoded, String coded) { 
 
         this.decoded = decoded;
         this.coded = coded;

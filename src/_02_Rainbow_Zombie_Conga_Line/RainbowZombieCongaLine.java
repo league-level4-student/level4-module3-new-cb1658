@@ -42,6 +42,8 @@ public class RainbowZombieCongaLine {
     	
     	newNode.setNext(temp);
     	
+    	congaLine.setHead(newNode);
+    	
     }
 
     // Make the passed in zombie the last Zombie in the conga line!
@@ -110,9 +112,22 @@ public class RainbowZombieCongaLine {
     public void youAreDone(Zombie dancer) {
     	Node<Zombie> temp = congaLine.getHead();
     	
+    	ZombieHatColor color = dancer.getZombieHatColor();
+    	
     	boolean killedZombie = false;
     	
+    	int position = 0;
+    	
     	while(!killedZombie) {
+    		
+    		if(temp.getValue().getZombieHatColor() == color) {
+    			congaLine.remove(position);
+    			killedZombie = true;
+    		}
+    		else {
+    			position++;
+    			temp = temp.getNext();
+    		}
     		
     	}
     }
@@ -122,7 +137,36 @@ public class RainbowZombieCongaLine {
      * add one to the front, one to the end and one in the middle.
      */
     public void brains(Zombie dancer) {
-
+    	
+    	ZombieHatColor color = dancer.getZombieHatColor();
+    	
+    	// Adding one to the front //
+    	
+    	Node<Zombie> temp = congaLine.getHead();
+    	
+    	Node<Zombie> newNode = new Node<Zombie>(dancer); 
+    	
+    	temp.setPrev(newNode);
+    	
+    	newNode.setNext(temp);
+    	
+    	congaLine.setHead(newNode);
+    	
+    	// Adding one to the back //
+    	
+    	Node<Zombie> temp2 = congaLine.getTail();
+    	
+    	Node<Zombie> newNode2 = new Node<Zombie>(dancer);
+    	
+    	temp.setNext(newNode2);
+    	
+    	newNode.setPrev(temp2);
+    	
+    	// Adding one in the middle //
+    	
+    	jumpInTheLine(dancer, (int) Math.ceil(congaLine.size()/2) );
+    	
+    	
     }
 
     /*
@@ -130,7 +174,26 @@ public class RainbowZombieCongaLine {
      * color to the end of the line.
      */
     public void rainbowBrains(Zombie dancer) {
-
+    	if(congaLine.getHead() != null) {
+    		Node<Zombie> temp = congaLine.getHead();
+        	
+        	Node<Zombie> newNode = new Node<Zombie>(dancer); 
+        	
+        	temp.setPrev(newNode);
+        	
+        	newNode.setNext(temp);
+        	
+        	congaLine.setHead(newNode);
+        	
+        	
+        	// Do everything else
+    	}
+    	
+    	else {
+    		Node<Zombie> newNode = new Node<Zombie>(dancer); 
+    		congaLine.setHead(newNode);
+    		
+    	}
     }
 
     public LinkedList<Zombie> getCongaLine() {

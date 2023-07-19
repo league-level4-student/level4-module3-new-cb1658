@@ -1,5 +1,7 @@
 package _03_Intro_to_Binary_Trees;
 
+import java.util.Random;
+
 public class BinaryTreeDemo {
 
     /*
@@ -33,7 +35,23 @@ public class BinaryTreeDemo {
      */
 
     public static void main(String[] args) {
-
+    	BinaryTree<Integer> tree = new BinaryTree<Integer>();
+    	
+    	for(int i = 0; i < 1000; i++) {
+    		Random rand = new Random();
+    		tree.insert(rand.nextInt(1000) - rand.nextInt(1000));
+    	}
+    	
+    	Node<Integer> root = tree.getRoot();
+    	
+    	
+    	
+    	System.out.println(root.getLeft().getLeft().getValue());
+    	System.out.println(root.getLeft().getRight().getValue());
+    	System.out.println(root.getRight().getLeft().getValue());
+    	System.out.println(root.getRight().getRight().getValue());
+    	
+    	
     }
 
 }

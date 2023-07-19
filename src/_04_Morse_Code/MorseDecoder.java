@@ -57,6 +57,7 @@ public class MorseDecoder {
      * 
      * -.-- --- ..- .- .-. . .- -- .- --.. .. -. --.
      * 
+     * 
      * 2.) Then use the binary tree and the scanner class to create a morse code
      * translator. The user should be able to type multiple letters in morse
      * code on a single line and have it repeated back to them, decoded into the
@@ -65,6 +66,10 @@ public class MorseDecoder {
      */
     void decode() {
         String morseCode = "-.-- --- ..- .- .-. . .- -- .- --.. .. -. --.";
+        
+        String decoded = " Y    O   U  A   R  E A  M   A  Z   I  N   G";
+        
+        System.out.println(decoded);
     }
 
 }
