@@ -1,6 +1,10 @@
 package _04_Morse_Code;
 
+
+import java.util.Scanner;
+
 import _03_Intro_to_Binary_Trees.BinaryTree;
+import _03_Intro_to_Binary_Trees.Node;
 
 public class MorseDecoder {
 
@@ -10,7 +14,10 @@ public class MorseDecoder {
 
         MorseDecoder md = new MorseDecoder();
         md.initialize();
-        md.decode();
+        
+        // md.decode();
+        
+        md.translate();
 
     }
 
@@ -65,11 +72,80 @@ public class MorseDecoder {
      * 
      */
     void decode() {
-        String morseCode = "-.-- --- ..- .- .-. . .- -- .- --.. .. -. --.";
+    	
+    	    	   	
+    	String morseCode = ". . . . . . .";
+        	
+    	String[] split = morseCode.split(" ");
+    	
+    	
+    	
+    	StringBuilder bob = new StringBuilder();
+    	
+    	
+    	
+    	for(int i = 0; i < split.length; i++) {
+    		
+    		Node<MorseCode> temp = mcTree.search(new MorseCode(split[i]));
+    		
+    		// System.out.println(temp.getValue());
+    		
+    		bob.append(temp.getValue());
+    	}
+    	
+    	System.out.println(bob);
+    	
+    }
+    
+    
+    
+    void translate() {
+    		
+    	Scanner scan = new Scanner(System.in);
+    	
+    	
+    	boolean doAgain = true;
+    	
+    	while(doAgain) {
+    	
+	    	System.out.println("Enter morse code:");
+	        
+	    	String morseCode = scan.nextLine();
+	    	
+	    	String[] split = morseCode.split(" ");
+	    	
+	    	
+	    	
+	    	StringBuilder bob = new StringBuilder();
+	    	
+	    	
+	    	
+	    	for(String s : split) {
+	    		
+	    		Node<MorseCode> temp = mcTree.search(new MorseCode(s));
+	    		
+	    		// System.out.println(temp.getValue());
+	    		
+	    		bob.append(temp.getValue());
+	    	}
+	    	
+	    	System.out.println(bob);
+	    	
+	    	System.out.println("Do you want to translate again? (y/n)");
+	    	
+	    	String result = scan.nextLine();
+	    	
+	    	if(result.equals("y")) {
+	    		doAgain = true;
+	    	}
+	    	else {
+	    		doAgain = false;
+	    	}
+    	
+    	}
         
-        String decoded = " Y    O   U  A   R  E A  M   A  Z   I  N   G";
-        
-        System.out.println(decoded);
+    	
+        scan.close();
     }
 
 }

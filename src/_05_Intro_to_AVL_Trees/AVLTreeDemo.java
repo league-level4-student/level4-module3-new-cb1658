@@ -1,5 +1,7 @@
 package _05_Intro_to_AVL_Trees;
 
+import java.util.Random;
+
 import _03_Intro_to_Binary_Trees.BinaryTree;
 
 public class AVLTreeDemo {
@@ -31,7 +33,29 @@ public class AVLTreeDemo {
      */
 
     public static void main(String[] args) {
-
+    	BinaryTree tree = new BinaryTree();
+    	AVLTree avl = new AVLTree();
+    	
+    	tree.insert(0);
+    	tree.insert(-1);
+    	tree.insert(-3);
+    	tree.insert(-100);
+    	tree.insert(-200);
+    	
+    	
+    	avl.insert(0);
+    	avl.insert(-1);
+    	avl.insert(-3);
+    	avl.insert(-100);
+    	avl.insert(-200);
+    	
+    	
+    	tree.printHorizontal();
+    	
+    	
+    	
+    	avl.printHorizontal();
+    	
     }
 
 }
